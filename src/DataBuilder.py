@@ -10,11 +10,16 @@ from sklearn import metrics
 
 
 def IndividualBuilder(size, possList, probList):
-    """ size - the list size to be created
-        PossArr - an list of the possible mutations
-                  types (mutation, deletion,...)
-        ProbArr - an list of the probibilities of the possible
-                  mutations occuring."""
+    """
+    Args:
+        size (int) - the list size to be created
+        PossArr - a list of the possible mutations
+            types (mutation, deletion,...)
+        ProbArr - a list of the probibilities of the possible
+            mutations occuring.
+    Returns:
+        individual (list)
+    """
     if(len(list(possList)) != len(list(probList))):
         raise Exception('len(PossArr) != len(ProbArr)')
     individual = [0]*size
