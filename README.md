@@ -14,23 +14,40 @@
 1. Groups are made of 100 individuals.
 2. Individuals are made of 1e6 binary locations, where 0 indicated no mutation and 1 indicates a mutation at that given nucleotide location.
 3. Every location has a 1/1500 chance of being a mutation.
-50% of the group was made sick with the following different methods:
-Options for making group sick
-Option 1: Single, randomly placed mutation indicates sickness
-Classification quality:  For the most part this simple scenario was handled quite well by all the classification algorithms and could even be potentially used in situations with some low noise.
-Option 2: One of two randomly placed mutations indicates sickness
-Classification quality:  Similar to option 1, this option could be was handled fairly well by the algorithms and could also handle some noise in the data.
-Option 3: A mutation at any 2 of 5 randomly selected mutation locations indicates sickness
-Classification quality:  The classification returned decent results for this option, but there seems to be little to no ability to handle noise in the data.
-Option 4: Given a randomly selected range of 1000 nucleotides, if there are at least 3 mutations present that indicates sickness
-Classification quality:  The classification returned quite poor results  for this option.  Results seemed to improve as compression is increased, which makes sense because the densities causing illness are combined into high values in theory.
-Option 5: Given a randomly selected range of 1000 nucleotides, if there are at least 3 mutations present and another 2 mutations are present elsewhere that indicates sickness
-Classification quality:  The classification returned decent results for this option, but this not much of a success as this option is just a slightly more complicated version of 1 and 2.
+4. 50% of the group was made sick with the following different methods:
+5. 
+**Options for making group sick**
+
+**Option 1:** Single, randomly placed mutation indicates sickness
+
+  Classification quality:  For the most part this simple scenario was handled quite well by all the classification algorithms and could even be potentially used in situations with some low noise.
+  
+**Option 2:** One of two randomly placed mutations indicates sickness
+
+  Classification quality:  Similar to option 1, this option could be was handled fairly well by the algorithms and could also handle some noise in the data.
+
+**Option 3:** A mutation at any 2 of 5 randomly selected mutation locations indicates sickness
+
+  Classification quality:  The classification returned decent results for this option, but there seems to be little to no ability to handle noise in the data.
+
+**Option 4:** Given a randomly selected range of 1000 nucleotides, if there are at least 3 mutations present that indicates sickness
+
+  Classification quality:  The classification returned quite poor results  for this option.  Results seemed to improve as compression is increased, which makes sense because the densities causing illness are combined into high values in theory.
+  
+**Option 5:** Given a randomly selected range of 1000 nucleotides, if there are at least 3 mutations present and another 2 mutations are present elsewhere that indicates sickness
+
+  Classification quality:  The classification returned decent results for this option, but this not much of a success as this option is just a slightly more complicated version of 1 and 2.
+  
 The attached files correspond to plots analysing the classification results of the Elastic Net with alpha = .01 for  each of these options, using different compression methods as well as different noise levels.
-Noise
+
+**Noise**
+
 There were also tests done with noise, such that the groups were generated in the ways above, then each individual was given a p percent chance of switching from being health to sick or sick to being healthy until p % of the group has been changed.
+
 What this does is create individuals who are sick without the mutations that the other sick individuals have, as well as healthy individuals who have the mutations that would normally indicate sickness.
+
 For the most part no compression method or classification method could deal particularly well with noise.
+
 Group Compression
 Windows
 For a window of size n, an individual’s mutation values (0-no mutation, or 1-mutation) would be added up for every n indices in the individual.  Window sizes that were examined were 500, 1000, 1500, 2500, 5000, 7000, and 10000.  In the end the method of compression individuals using windows proved to eliminate too much data indiscriminately and resulted in poor classification results.
